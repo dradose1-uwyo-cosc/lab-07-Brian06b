@@ -1,8 +1,8 @@
-# Your Name Here
+# Brian Barrios Montiel
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# 10/28/24
+# Lab 07
+# Lab Section: 11
 # Sources, people worked with, help given to: 
 # your
 # comments
@@ -16,10 +16,23 @@
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
-
-factorial = 1
-
-print(f"The result of the factorial based on the given bound is {factorial}")
+def factorial(n):
+    """Calculuate the factorial of a positive number as the upper bound"""
+    factorial = 1
+    while n > 1:
+        factorial *= n
+        n -= 1
+    return factorial
+upper_bound = input("Enter a positive number as the upper bound: ")
+while True:
+    if upper_bound.isdigit() and int(upper_bound) > 0:
+        upper_bound = int(upper_bound)
+        break
+    else:
+        print("Invalid input. Please enter a positive integer")
+        upper_bound = input("Enter a positive number as the upper bound: ")
+result = factorial(upper_bound)
+print(f"The result of the factorial based on the given bound is {result}")
 
 print("*"*75)
 # Create a while loop that prompts a user for input of an integer values
@@ -39,6 +52,20 @@ print("*"*75)
 
 num_sum = 0 
 
+while True:
+    user_input = input("Enter a number value or type 'exit' to end:")
+    if user_input.lower() == 'exit':
+        break
+    if user_input.startswith('-'):
+        if user_input[1:].isdigit():
+            num_sum -= int(user_input[1:])
+        else:
+            print("Invalid, enter a valid number")
+    else:
+        if user_input.isdigit():
+            num_sum += int(user_input)
+        else:
+            print("Invalid, enter a valid number")
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -59,4 +86,32 @@ print("*"*75)
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
 
-        
+def calculate(expression):
+    parts = expression.split()
+    if len(parts) != 3:
+        return "Invalid Input"
+    operand1, operator, operand2 = parts
+    if not(operand1.isdigit() and operand2.isdigit()):
+        return "Invalid input"
+    operand1 = int(operand1)
+    operand2 = int(operand2)
+    if operator == '+':
+        return operand1 + operand2
+    elif operator == '-':
+        return operand1 - operand2
+    elif operator == '*':
+        return operand1 * operand2
+    elif operator == '/':
+        if operand2 == 0:
+            return "Error"
+        return operand1 / operand2
+    elif operator == '%':
+        return operand1 % operand2
+    else:
+        return "Invalid"
+while True:
+    user_input = input("Enter an expression or type 'exit: ")
+    if user_input.lower() == 'exit':
+        break
+    result = calculate(user_input)
+    print(result)
