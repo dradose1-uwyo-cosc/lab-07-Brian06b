@@ -3,7 +3,8 @@
 # 10/28/24
 # Lab 07
 # Lab Section: 11
-# Sources, people worked with, help given to: 
+# Sources, people worked with, help given to: https://www.w3schools.com/python/ref_string_split.asp 
+#https://www.w3schools.com/python/ref_string_replace.asp  
 # your
 # comments
 # here
@@ -16,22 +17,22 @@
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
-def factorial(n):
-    """Calculuate the factorial of a positive number as the upper bound"""
+def factorial(a):
+    """Calculuate the factorial of a positive number"""
     factorial = 1
-    while n > 1:
-        factorial *= n
-        n -= 1
+    while a > 1:
+        factorial *= a
+        a -= 1
     return factorial
-upper_bound = input("Enter a positive number as the upper bound: ")
+upper = input("Enter a positive number as the upper bound: ")
 while True:
-    if upper_bound.isdigit() and int(upper_bound) > 0:
-        upper_bound = int(upper_bound)
+    if upper.isdigit() and int(upper) > 0:
+        upper = int(upper)
         break
     else:
-        print("Invalid input. Please enter a positive integer")
-        upper_bound = input("Enter a positive number as the upper bound: ")
-result = factorial(upper_bound)
+        print("Invalid. enter a positive integer")
+        upper = input("Enter a positive number: ")
+result = factorial(upper)
 print(f"The result of the factorial based on the given bound is {result}")
 
 print("*"*75)
@@ -88,27 +89,23 @@ print("*"*75)
 
 def calculate(expression):
     parts = expression.split()
-    if len(parts) != 3:
-        return "Invalid Input"
-    operand1, operator, operand2 = parts
-    if not(operand1.isdigit() and operand2.isdigit()):
+    operator1, operator, operator2 = parts
+    if not(operator1.isdigit() and operator2.isdigit()):
         return "Invalid input"
-    operand1 = int(operand1)
-    operand2 = int(operand2)
+    operator1 = int(operator1)
+    operator2 = int(operator2)
     if operator == '+':
-        return operand1 + operand2
+        return operator1 + operator2
     elif operator == '-':
-        return operand1 - operand2
+        return operator1 - operator2
     elif operator == '*':
-        return operand1 * operand2
+        return operator1 * operator2
     elif operator == '/':
-        if operand2 == 0:
+        if operator2 == 0:
             return "Error"
-        return operand1 / operand2
+        return operator1 / operator2
     elif operator == '%':
-        return operand1 % operand2
-    else:
-        return "Invalid"
+        return operator1 % operator2
 while True:
     user_input = input("Enter an expression or type 'exit: ")
     if user_input.lower() == 'exit':
