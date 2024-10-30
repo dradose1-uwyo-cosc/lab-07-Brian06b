@@ -30,7 +30,7 @@ while True:
         upper = int(upper)
         break
     else:
-        print("Invalid. enter a positive integer")
+        print("enter a positive number")
         upper = input("Enter a positive number: ")
 result = factorial(upper)
 print(f"The result of the factorial based on the given bound is {result}")
@@ -54,19 +54,19 @@ print("*"*75)
 num_sum = 0 
 
 while True:
-    user_input = input("Enter a number value or type 'exit' to end:")
-    if user_input.lower() == 'exit':
+    user_input = input("Enter a number value or type 'equals' to end:")
+    if user_input.lower() == 'equals':
         break
     if user_input.startswith('-'):
         if user_input[1:].isdigit():
             num_sum -= int(user_input[1:])
         else:
-            print("Invalid, enter a valid number")
+            print("enter a valid number")
     else:
         if user_input.isdigit():
             num_sum += int(user_input)
         else:
-            print("Invalid, enter a valid number")
+            print("enter a valid number")
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -91,7 +91,7 @@ def calculate(expression):
     parts = expression.split()
     operator1, operator, operator2 = parts
     if not(operator1.isdigit() and operator2.isdigit()):
-        return "Invalid input"
+        return "Invalid"
     operator1 = int(operator1)
     operator2 = int(operator2)
     if operator == '+':
@@ -102,7 +102,7 @@ def calculate(expression):
         return operator1 * operator2
     elif operator == '/':
         if operator2 == 0:
-            return "Error"
+            return "DNE"
         return operator1 / operator2
     elif operator == '%':
         return operator1 % operator2
